@@ -13,10 +13,12 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
+model = load(resource_path('Colon_cancer_svc.joblib'))    
+
+
 @app.post("/")
 async def root():
-    model = load(resource_path('Colon_cancer_svc.joblib'))    
-    return {"message": 'hello'}    
+    return {"message": model}    
     
 
 @app.post("/uploadcsv")
