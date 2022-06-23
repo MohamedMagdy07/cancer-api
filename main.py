@@ -20,6 +20,12 @@ app = FastAPI(title="Colon ML API", description="Colon for iris dataset ml model
 
 
 
+@app.get("/")
+def home():
+    return {"message":"Hello TutLinks.com"}
+
+
+
 @app.on_event('startup')
 def load_model():
     global model
