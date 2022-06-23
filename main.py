@@ -25,7 +25,8 @@ async def root():
 async def upload_file(file: UploadFile):
     data = pd.read_csv(file.file, header=None)
     if len(data.columns) == 50:
-        prediction = model.predict(data)
+        prediction =pd.Series(model.predict(data))
+        print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
         result = result.replace({0: 'Normal', 1: 'Tumoral '})
