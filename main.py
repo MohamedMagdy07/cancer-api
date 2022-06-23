@@ -1,14 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 from pydantic import BaseModel, conlist
 import pandas as pd
 
-
-# In[2]:
 
 
 from fastapi import FastAPI, Body,UploadFile,Header,File
@@ -17,7 +10,6 @@ from joblib import load
 Model = load('Colon_cancer_svc.joblib')
 
 
-# In[3]:
 
 
 from fastapi import FastAPI, Body,UploadFile,Header,File
@@ -44,11 +36,4 @@ async def upload_file(file: UploadFile):
     result=result.values.tolist()
     return {"prediction": result,}    
     
-
-
-# In[ ]:
-
-
-import uvicorn
-uvicorn.run(app=app, port=5000, log_level="info", host="127.0.0.1")
 
