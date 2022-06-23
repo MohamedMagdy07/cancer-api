@@ -25,6 +25,7 @@ async def root():
 async def upload_file(file: UploadFile):
     print(model)
     data = pd.read_csv(file.file, header=None)
+    print(data)
     if len(data.columns) == 50:
         prediction = model.predict(data)
         print(prediction.tolist())
