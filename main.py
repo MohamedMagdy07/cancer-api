@@ -30,6 +30,7 @@ async def upload_file(file: UploadFile):
             result='normal'
         elif prediction==1:
             result='tomural'
+        result=pd.DataFrame(result)
     else:
         result = "Please Upload Usable Data File"
     return {"prediction": result,}   
