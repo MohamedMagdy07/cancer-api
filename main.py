@@ -18,7 +18,7 @@ model = load(resource_path('Colon_cancer_svc.joblib'))
 
 @app.post("/")
 async def root():
-    return {"message": model}    
+    return {"message": 'Hello'}    
     
 
 @app.post("/uploadcsv")
