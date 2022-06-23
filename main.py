@@ -8,11 +8,11 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
+    model = load('1243.joblib')    
     return {"message": 'hello'}    
     
-@app.on_event('startup')
-def load_model():
-    model = load('./Colon_cancer_svc.joblib')    
+#@app.on_event('startup')
+#def load_model():
     
     
     
