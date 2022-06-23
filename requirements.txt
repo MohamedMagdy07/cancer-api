@@ -1,6 +1,3 @@
 fastapi
-joblib
-pandas
-python-multipart
 gunicorn
 unicorn 
