@@ -6,8 +6,6 @@ app = FastAPI()
 
 
 @app.get("/")
-def home():
-    return {"message":"Hello TutLinks.com"}
-
-
+async def root():
+    return {"message": "Hello World"}
    
