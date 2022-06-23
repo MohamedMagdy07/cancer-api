@@ -23,10 +23,12 @@ async def root():
 
 @app.post("/uploadcsv")
 async def upload_file(file: UploadFile):
-    dataframe = pd.read_csv(file.file)
-    prediction = model.predict(dataframe).tolist()
-    result=pd.DataFrame(prediction)
-    result=result.replace({0:'normal',1:'adenocarcinoma'})
-    result=result.values.tolist()
-    print(model)
+    dataframe = pd.read_csv(file.file, header=None)
+    if len(data.columns) == 50:
+        prediction = model.predict(data)
+        result = pd.DataFrame(prediction)
+        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result[0].iloc[0]
+    else:
+        result = "Please Upload Usable Data File"
     return {"prediction": result,}   
