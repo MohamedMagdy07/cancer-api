@@ -8,11 +8,8 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}    
-
-@app.on_event('startup')
-async def load_model():
     model = load('Colon_cancer_svc.joblib')
+    return {"message": "Hello World"}    
     
     
 @app.post("/uploadfile/")
