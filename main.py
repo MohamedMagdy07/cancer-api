@@ -23,7 +23,7 @@ async def root():
 
 @app.post("/uploadcsv")
 async def upload_file(file: UploadFile):
-    dataframe = pd.read_csv(file.file)
+    dataframe = pd.read_csv(file.file, header=None)
     prediction = model.predict(dataframe).tolist()
     print(prediction)
     result=pd.DataFrame(prediction)
