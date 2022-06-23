@@ -10,11 +10,11 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}    
     
-@app.post("/files/")
+@app.get("/files/")
 async def create_file(file: bytes = File()):
     return {"file_size": len(file)}
 
 
-@app.post("/uploadfile/")
+@app.get("/uploadfile/")
 async def create_upload_file(file: UploadFile):
     return {"filename": file.filename}
