@@ -29,7 +29,7 @@ async def upload_file(file: UploadFile):
         if prediction==0 :
             result='normal'
         elif prediction==1:
-            result="tomural'
+            result='tomural'
     else:
         result = "Please Upload Usable Data File"
     return {"prediction": result,}   
