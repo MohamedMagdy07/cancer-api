@@ -14,7 +14,7 @@ async def root():
 
 
 @app.on_event('startup')
-def load_model():
+async def load_model():
     global model
     model = load('Colon_cancer_svc.joblib')
 
