@@ -27,8 +27,11 @@ async def upload_file(file: UploadFile):
     data = pd.read_csv(file.file, header=None)
     if len(data.columns) == 50:
         prediction = model.predict(data)
+        print(prediction.tolist())
         result = pd.DataFrame(prediction)
         result = result.replace({0: 'Normal', 1: 'Tumoral '})
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
+    return {"prediction": result,}    
+
