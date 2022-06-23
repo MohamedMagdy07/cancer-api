@@ -14,3 +14,5 @@ six==1.14.0
 starlette==0.19.1
 websockets==8.1
 wrapt==1.11.2
+pandas==1.4.1
+joblib==1.1.0
