@@ -6,10 +6,14 @@ import pandas as pd
 app = FastAPI()
 
 
-@app.post("/")
+@app.get("/")
 async def root():
-    model = load('./Colon_cancer_svc.joblib')
-    return {"message": model}    
+    return {"message": 'hello'}    
+    
+@app.on_event('startup')
+def load_model():
+    model = load('./Colon_cancer_svc.joblib')    
+    
     
     
 @app.post("/uploadfile/")
