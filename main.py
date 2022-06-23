@@ -28,7 +28,7 @@ async def upload_file(file: UploadFile):
         prediction = model.predict(data)
         result = pd.DataFrame(prediction)
         result = result.replace({0: 'Normal', 1: 'Tumoral '})
-        result = result[0].iloc[0]
+        print(result)
     else:
         result = "Please Upload Usable Data File"
     return {"prediction": result,}   
