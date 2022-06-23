@@ -23,11 +23,11 @@ async def root():
 
 @app.post("/uploadcsv")
 async def upload_file(file: UploadFile):
-    print(model)
     data = pd.read_csv(file.file, header=None)
-    print(data)
     if len(data.columns) == 50:
         prediction = model.predict(data)
+        print(prediction[0])
+        print(prediction)
         print(prediction.tolist())
         result = pd.DataFrame(prediction)
         result = result.replace({0: 'Normal', 1: 'Tumoral '})
