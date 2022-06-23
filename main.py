@@ -6,7 +6,7 @@ import pandas as pd
 app = FastAPI()
 
 
-@app.get("/")
+@app.post("/")
 async def root():
     model = load('1243.joblib')    
     return {"message": 'hello'}    
