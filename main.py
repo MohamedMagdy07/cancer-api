@@ -15,14 +15,19 @@ def resource_path(relative_path):
 
 @app.post("/")
 async def root():
-    model = load(resource_path('Colon_cancer_svc.joblib'))    
     return {"message": 'hello'}    
     
-#@app.on_event('startup')
-#def load_model():
-    
-    
-    
-@app.post("/uploadfile/")
-async def create_upload_file(file: UploadFile):
-    return {"filename": file.filename}
+@app.on_event('startup')
+def load_model():
+        model = load(resource_path('Colon_cancer_svc.joblib'))    
+
+
+@app.post("/uploadcsv")
+async def upload_file(file: UploadFile):
+    dataframe = pd.read_csv(file.file)
+    prediction = model.predict(dataframe).tolist()
+    result=pd.DataFrame(prediction)
+    result=result.replace({0:'normal',1:'adenocarcinoma'})
+    result=result.values.tolist()
+    print(model)
+    return {"prediction": result,}   
