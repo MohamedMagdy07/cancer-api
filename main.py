@@ -32,4 +32,4 @@ async def upload_file(file: UploadFile):
         result=result.values.tolist()
     else:
         result = "Please Upload Usable Data File"
-    return {"result": result,"prediction":prediction}   
+    return {"result": result,"prediction":prediction.tolist()}   
