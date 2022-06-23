@@ -6,8 +6,8 @@ import pandas as pd
 app = FastAPI()
 
 
-@app.put("/")
-async def root():
+@app.post("/")
+async def root(model):
     model = load('Colon_cancer_svc.joblib')
     return {"message": model}    
     
