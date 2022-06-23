@@ -29,4 +29,4 @@ async def upload_file(file: UploadFile):
     result=pd.DataFrame(prediction)
     result=result.replace({0:'Normal',1:'Tomural'})
     result=result.values.tolist()
-    return {"result": result,"prediction":prediction.tolist()}   
+    return {"result": result,}   
