@@ -15,12 +15,9 @@ def resource_path(relative_path):
 
 @app.post("/")
 async def root():
+    model = load(resource_path('Colon_cancer_svc.joblib'))    
     return {"message": 'hello'}    
     
-@app.on_event('startup')
-def load_model():
-        model = load(resource_path('Colon_cancer_svc.joblib'))    
-
 
 @app.post("/uploadcsv")
 async def upload_file(file: UploadFile):
