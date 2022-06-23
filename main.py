@@ -25,7 +25,8 @@ async def root():
 async def upload_file(file: UploadFile):
     dataframe = pd.read_csv(file.file)
     prediction = model.predict(dataframe).tolist()
+    print(prediction)
     result=pd.DataFrame(prediction)
-    result=result.replace({0:'normal',1:'adenocarcinoma'})
+    result=result.replace({0:'Normal',1:'Tomural'})
     result=result.values.tolist()
     return {"result": result,"prediction":prediction.tolist()}   
