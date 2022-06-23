@@ -9,10 +9,9 @@ app = FastAPI()
 @app.get("/")
 async def root():
     return {"message": "Hello World"}    
-    
+
 @app.on_event('startup')
-def load_model():
-    global model
+async def load_model():
     model = load('Colon_cancer_svc.joblib')
     
     
