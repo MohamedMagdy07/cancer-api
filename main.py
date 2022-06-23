@@ -24,9 +24,5 @@ async def root():
 @app.post("/uploadcsv")
 async def upload_file(file: UploadFile):
     dataframe = pd.read_csv(file.file, header=None)
-    prediction = model.predict(dataframe).tolist()
-    print(prediction)
-    result=pd.DataFrame(prediction)
-    result=result.replace({0:'Normal',1:'Tomural'})
-    result=result.values.tolist()
-    return {"result": result,}   
+    prediction = model.predict(dataframe)
+    return {"prediction": prediction,}   
