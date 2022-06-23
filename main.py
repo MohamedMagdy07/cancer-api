@@ -25,4 +25,4 @@ async def root():
 async def upload_file(file: UploadFile):
     dataframe = pd.read_csv(file.file, header=None)
     prediction = model.predict(dataframe)
-    return {"prediction": prediction,}   
+    return {"prediction": prediction.tolist(),}   
