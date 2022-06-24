@@ -11,7 +11,7 @@ mccabe==0.6.1
 pydantic==1.8.2
 pylint==2.4.4
 six==1.14.0
-starlette==0.19.1
+starlette==0.17.1
 websockets==8.1
 wrapt==1.11.2
 pandas==1.4.1
