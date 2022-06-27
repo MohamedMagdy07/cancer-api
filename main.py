@@ -22,7 +22,7 @@ async def root():
     
 
 @app.post("/uploadcsv")
-async def upload_file(upfile: UploadFile=File()):
+async def upload_file(file: UploadFile):
     data = pd.read_csv(file.file, header=None)
     if len(data.columns) == 50:
         prediction =pd.Series(model.predict(data))
