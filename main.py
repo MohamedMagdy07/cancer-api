@@ -5,7 +5,7 @@ import pandas as pd
 import sys
 import os
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
