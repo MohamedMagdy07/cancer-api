@@ -1,1 +1,1 @@
-web: gunicorn nWorker main:app
+web: gunicorn main:app
