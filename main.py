@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI, Body,UploadFile,Header,File
+from fastapi import FastAPI, Body,UploadFile,Header,File,HTTPException
 from joblib import load
 import pandas as pd
 import sys
@@ -21,8 +21,9 @@ async def root():
     return {"message": 'Hello'}    
     
 
-@app.post("/uploadcsv/{file}")
+@app.post("/uploadcsv/",response_model=file)
 async def upload_file(file: UploadFile = File(...),):
+    
     data = pd.read_csv(file.file, header=None)
     if len(data.columns) == 50:
         prediction =pd.Series(model.predict(data))
