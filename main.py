@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI, Body,UploadFile,Header,File,HTTPException
+from fastapi import FastAPI, Body,UploadFile,Header,File,Request
 from joblib import load
 import pandas as pd
 import sys
@@ -34,5 +34,5 @@ async def upload_file(file: UploadFile = File(...)):
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
-    return {"prediction": result,}    
+    return {"Filename": file.filename,"prediction": result,}    
 
