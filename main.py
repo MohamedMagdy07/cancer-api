@@ -21,7 +21,7 @@ async def root():
     return {"message": 'Hello'}    
     
 
-@app.post("/uploadcsv/",response_model=file)
+@app.post("/uploadcsv/",response_model=File)
 async def upload_file(file: UploadFile = File(...),):
     
     data = pd.read_csv(file.file, header=None)
