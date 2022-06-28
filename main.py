@@ -22,7 +22,7 @@ async def root():
     
 
 @app.post("/uploadcsv/",)
-async def upload_file(file: UploadFile = File(...),fileb: Body(...)):
+async def upload_file(file: UploadFile = File(...),fileb: UploadFile=Body(...)):
     
     data = pd.read_csv(file.file, header=None)
     if len(data.columns) == 50:
