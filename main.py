@@ -36,3 +36,6 @@ async def upload_file(file:UploadFile):
         result = "Please Upload Usable Data File"
     return {"Filename": file.filename,"prediction": result,}    
 
+@app.post("/name/",)
+async def name(string:str):
+    return {'name':string}
