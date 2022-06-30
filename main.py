@@ -13,7 +13,12 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-model = load(resource_path('Colon_cancer_svc.joblib'))    
+model_Colon = load(resource_path('Colon_cancer_svc.joblib'))
+model_Lung = load(resource_path('Lung_cancer_svc.joblib'))    
+model_Liver = load(resource_path('Liver_cancer_svc.joblib'))    
+model_Leukemia = load(resource_path('Leukemia_cancer_svc.joblib'))    
+model_Breast = load(resource_path('Breast_cancer_svc.joblib'))    
+
 
 
 @app.post("/")
@@ -21,12 +26,12 @@ async def root():
     return {"message": 'Hello'}    
     
 
-@app.post("/uploadcsv/",)
+@app.post("/detectLung/",)
 async def upload_file(file:UploadFile):
     
     data = pd.read_csv(file.file, header=None)
     if len(data.columns) == 50:
-        prediction =pd.Series(model.predict(data))
+        prediction =pd.Series(model_Lung.predict(data))
         print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
@@ -34,8 +39,65 @@ async def upload_file(file:UploadFile):
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
-    return {"Filename": file.filename,"prediction": result,}    
+    return {"prediction": result,}    
 
-@app.post("/name/",)
-async def name(string:str):
-    return {'name':string}
+@app.post("/detectLiver/",)
+async def upload_file(file:UploadFile):
+    
+    data = pd.read_csv(file.file, header=None)
+    if len(data.columns) == 50:
+        prediction =pd.Series(model_Liver.predict(data))
+        print(prediction)
+        result = pd.DataFrame(prediction)
+        print(result)
+        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result[0].iloc[0]
+    else:
+        result = "Please Upload Usable Data File"
+    return {"prediction": result,}    
+
+@app.post("/detectLeukemia/",)
+async def upload_file(file:UploadFile):
+    
+    data = pd.read_csv(file.file, header=None)
+    if len(data.columns) == 50:
+        prediction =pd.Series(model_Leukemia.predict(data))
+        print(prediction)
+        result = pd.DataFrame(prediction)
+        print(result)
+        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result[0].iloc[0]
+    else:
+        result = "Please Upload Usable Data File"
+    return {"prediction": result,}    
+
+@app.post("/detectBreast/",)
+async def upload_file(file:UploadFile):
+    
+    data = pd.read_csv(file.file, header=None)
+    if len(data.columns) == 50:
+        prediction =pd.Series(model_Breast.predict(data))
+        print(prediction)
+        result = pd.DataFrame(prediction)
+        print(result)
+        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result[0].iloc[0]
+    else:
+        result = "Please Upload Usable Data File"
+    return {"prediction": result,}    
+
+@app.post("/detectColon/",)
+async def upload_file(file:UploadFile):
+    
+    data = pd.read_csv(file.file, header=None)
+    if len(data.columns) == 50:
+        prediction =pd.Series(model_Colon.predict(data))
+        print(prediction)
+        result = pd.DataFrame(prediction)
+        print(result)
+        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result[0].iloc[0]
+    else:
+        result = "Please Upload Usable Data File"
+    return {"prediction": result,}    
+
