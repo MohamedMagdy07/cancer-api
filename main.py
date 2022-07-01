@@ -30,12 +30,12 @@ async def root():
 async def upload_file(file:UploadFile):
     
     data = pd.read_csv(file.file, header=None)
-    if len(data.columns) == 50:
+    if len(data.columns) == 2000:
         prediction =pd.Series(model_Lung.predict(data))
         print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
-        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result.replace({0: 'Tumoral', 1: 'Normal'})
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
@@ -60,12 +60,12 @@ async def upload_file(file:UploadFile):
 async def upload_file(file:UploadFile):
     
     data = pd.read_csv(file.file, header=None)
-    if len(data.columns) == 50:
+    if len(data.columns) == 15000:
         prediction =pd.Series(model_Leukemia.predict(data))
         print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
-        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result.replace({0: 'JMML', 1: 'Normal'})
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
@@ -90,12 +90,12 @@ async def upload_file(file:UploadFile):
 async def upload_file(file:UploadFile):
     
     data = pd.read_csv(file.file, header=None)
-    if len(data.columns) == 50:
+    if len(data.columns) == 2000:
         prediction =pd.Series(model_Colon.predict(data))
         print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
-        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result.replace({0: 'Normal', 1: 'Tumoral'})
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
