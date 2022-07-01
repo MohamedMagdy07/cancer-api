@@ -75,7 +75,7 @@ async def upload_file(file:UploadFile):
 async def upload_file(file:UploadFile):
     
     data = pd.read_csv(file.file, header=None)
-    if len(data.columns) == 50:
+    if len(data.columns) == 5000:
         prediction =pd.Series(model_Breast.predict(data))
         print(prediction)
         result = pd.DataFrame(prediction)
