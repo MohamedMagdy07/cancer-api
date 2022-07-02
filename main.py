@@ -13,11 +13,11 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-model_Colon = load(resource_path('Colon_cancer_svc.joblib'))
-model_Lung = load(resource_path('Lung_cancer_svc.joblib'))    
-model_Liver = load(resource_path('Liver_cancer_svc.joblib'))    
-model_Leukemia = load(resource_path('Leukemia_cancer_svc.joblib'))    
-model_Breast = load(resource_path('Breast_cancer_svc.joblib'))    
+model_Colon = load(resource_path('alone_cancer_RF.joblib'))
+model_Lung = load(resource_path('lung_cancer_knn.joblib'))    
+model_Liver = load(resource_path('Liver_cancer_RF.joblib'))    
+model_Leukemia = load(resource_path('luekemia_cancer_svc.joblib'))    
+model_Breast = load(resource_path('Breast_cancer_RF.joblib'))    
 
 
 
