@@ -23,7 +23,7 @@ model_Breast = load(resource_path('Breast_cancer_svc.joblib'))
 
 @app.post("/")
 async def root():
-    return {"message": 'Hello'}    
+    return {"message": 'cancer Api'}    
     
 
 @app.post("/detectLung/",)
@@ -65,7 +65,7 @@ async def upload_file(file:UploadFile):
         print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
-        result = result.replace({0: 'JMML', 1: 'Normal'})
+        result = result.replace({0: 'Tumoral', 1: 'Normal'})
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
@@ -80,7 +80,7 @@ async def upload_file(file:UploadFile):
         print(prediction)
         result = pd.DataFrame(prediction)
         print(result)
-        result = result.replace({0: 'Normal', 1: 'Tumoral '})
+        result = result.replace({0: 'Normal', 1: 'Tumoral'})
         result = result[0].iloc[0]
     else:
         result = "Please Upload Usable Data File"
