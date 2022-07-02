@@ -90,7 +90,7 @@ async def upload_file(file:UploadFile):
 async def upload_file(file:UploadFile):
     
     data = pd.read_csv(file.file, header=None)
-    if len(data.columns) == 2000:
+    if len(data.columns) == 200:
         prediction =pd.Series(model_Colon.predict(data))
         print(prediction)
         result = pd.DataFrame(prediction)
